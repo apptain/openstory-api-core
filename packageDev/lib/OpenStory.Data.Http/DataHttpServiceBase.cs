@@ -7,7 +7,7 @@ using OpenStory.Data;
 
 namespace OpenStory.Data.Http
 {
-    public abstract class DataHttpServiceBase : DataServiceBase, IDataHttpService
+    public abstract class DataHttpServiceBase : DataRepositoryBase, IDataHttpService
     {
         public async Task<KeyValuePair<object, object>> SessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {

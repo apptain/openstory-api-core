@@ -9,7 +9,7 @@ namespace OpenStory.Data.Http
     {
         public DataHttpServiceOptions()
         {
-            Domain = "PNL";
+            Domain = "OpenStory";
         }
         
         public Uri BaseAddress { get; set; }
