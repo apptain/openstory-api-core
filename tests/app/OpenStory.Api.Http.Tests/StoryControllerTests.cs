@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MockQueryable;
 using MockQueryable.NSubstitute;
 using Moq;
-using OpenStory.Api.Data;
+using OpenStory.Data;
 using OpenStory.Api.Services.Story;
 using System.Collections.Generic;
 using System.Linq;

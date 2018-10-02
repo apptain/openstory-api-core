@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\packageDev\lib\OpenStory.Api.Data\OpenStory.Data.csproj" />
+    <ProjectReference Include="..\..\packageDev\lib\OpenStory.Data\OpenStory.Data.csproj" />
     <ProjectReference Include="..\..\packageDev\OpenStory.Api.Domain\OpenStory.Api.Domain.csproj" />
     <ProjectReference Include="..\OpenStory.Api.LinkRelations\OpenStory.Api.Http.Linking.csproj" />
   </ItemGroup>

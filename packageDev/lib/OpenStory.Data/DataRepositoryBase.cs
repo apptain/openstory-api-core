@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OpenStory.Api.Data
+namespace OpenStory.Data
 {
     /// <summary>
     /// Provides a base repository capable of retrieving and persisting information.

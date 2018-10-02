@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OpenStory.Api.Data
+namespace OpenStory.Data
 {
     public interface IDataRepository
     {

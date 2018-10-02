@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-using OpenStory.Api.Data;
+using OpenStory.Data;
 using OpenStory.Api.Http.Linking;
 using OpenStory.Api.Services.Story;
 

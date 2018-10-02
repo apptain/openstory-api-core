@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{491C65B5-504
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Api.Domain", "packageDev\OpenStory.Api.Domain\OpenStory.Api.Domain.csproj", "{91AC7A90-ADD8-4448-AF4D-9B8420C61CB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Data", "packageDev\lib\OpenStory.Api.Data\OpenStory.Data.csproj", "{2C3C4AA5-7A6C-4CC0-A735-72FEBC50F23A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Data", "packageDev\lib\OpenStory.Data\OpenStory.Data.csproj", "{2C3C4AA5-7A6C-4CC0-A735-72FEBC50F23A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".etc", ".etc", "{6D4D293B-64F1-4DE4-9337-B5A259F2BC60}"
 	ProjectSection(SolutionItems) = preProject
@@ -32,6 +32,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{ED346DDC-7DA0-4C2E-9242-92B3AE3EA140}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Api.Http.Tests", "tests\app\OpenStory.Api.Http.Tests\OpenStory.Api.Http.Tests.csproj", "{23512174-E601-482C-9B96-87A5F266CF73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Sagas", "packages\lib\OpenStory.Sagas\OpenStory.Sagas.csproj", "{D82B9372-777E-4229-87FE-C71777789509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{23512174-E601-482C-9B96-87A5F266CF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23512174-E601-482C-9B96-87A5F266CF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23512174-E601-482C-9B96-87A5F266CF73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D82B9372-777E-4229-87FE-C71777789509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82B9372-777E-4229-87FE-C71777789509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D82B9372-777E-4229-87FE-C71777789509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D82B9372-777E-4229-87FE-C71777789509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{2C3C4AA5-7A6C-4CC0-A735-72FEBC50F23A} = {491C65B5-5044-4608-8C47-A1ADAEB2FA9F}
 		{ED346DDC-7DA0-4C2E-9242-92B3AE3EA140} = {7F8FE2C7-6505-4CD4-BE86-0AE2CA388DC0}
 		{23512174-E601-482C-9B96-87A5F266CF73} = {ED346DDC-7DA0-4C2E-9242-92B3AE3EA140}
+		{D82B9372-777E-4229-87FE-C71777789509} = {491C65B5-5044-4608-8C47-A1ADAEB2FA9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7367170C-E4D6-4513-982C-0F56E70A3B7E}

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OpenStory.Api.Data;
+using OpenStory.Data;
 
 namespace OpenStory.Api.Http.Controllers
 {
