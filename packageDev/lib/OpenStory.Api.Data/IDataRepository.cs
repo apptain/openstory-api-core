@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace OpenStory.Api.Data
 {
-    public interface IDataService
+    public interface IDataRepository
     {
         //Gets one based on identifier value matching key
         Task<T> Get<T, TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);

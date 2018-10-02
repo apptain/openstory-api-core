@@ -8,7 +8,7 @@ namespace OpenStory.Api.Data
     /// <summary>
     /// Provides a base repository capable of retrieving and persisting information.
     /// </summary>
-    public abstract class DataServiceBase : IDataService
+    public abstract class DataRepositoryBase : IDataRepository
     {
         public void Dispose()
         {
