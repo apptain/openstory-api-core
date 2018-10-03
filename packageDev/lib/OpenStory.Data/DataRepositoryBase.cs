@@ -10,20 +10,6 @@ namespace OpenStory.Data
     /// </summary>
     public abstract class DataRepositoryBase : IDataRepository
     {
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                
-            }
-        }
-
         public async Task<T> Get<T, TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();

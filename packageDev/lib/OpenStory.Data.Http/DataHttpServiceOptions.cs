@@ -11,7 +11,7 @@ namespace OpenStory.Data.Http
         {
             Domain = "OpenStory";
         }
-        
+
         public Uri BaseAddress { get; set; }
 
         public string Authentication { get; set; }

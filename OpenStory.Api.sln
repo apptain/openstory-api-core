@@ -24,7 +24,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".etc", ".etc", "{6D4D293B-64F1-4DE4-9337-B5A259F2BC60}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		README.MD = README.MD
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7F8FE2C7-6505-4CD4-BE86-0AE2CA388DC0}"

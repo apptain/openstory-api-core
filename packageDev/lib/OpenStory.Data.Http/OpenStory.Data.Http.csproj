@@ -5,7 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hystrix.Dotnet.AspNetCore" Version="1.1.0-beta1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0-preview2-35157" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OpenStory.Data\OpenStory.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>System</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
