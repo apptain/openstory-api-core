@@ -10,9 +10,9 @@ namespace OpenStory.Data.Http
 {
     public abstract class DataHttpServiceBase : DataRepositoryBase, IDataHttpService
     {
-        private readonly ILogger<DataHttpServiceBase> _logger;
-        private readonly DataHttpServiceOptions _options;
-        private readonly IHystrixCommandFactory _hystrixCommandFactory;
+        protected readonly ILogger<DataHttpServiceBase> _logger;
+        protected readonly DataHttpServiceOptions _options;
+        protected readonly IHystrixCommandFactory _hystrixCommandFactory;
 
         public DataHttpServiceBase(HystrixCommandFactory hystrixCommandFactory, ILogger<DataHttpServiceBase> logger, 
             DataHttpServiceOptions options)

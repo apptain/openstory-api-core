@@ -8,12 +8,12 @@ namespace OpenStory.Data.Http
 {
     public abstract class DataHttpRepositoryBase : DataRepositoryBase
     {
-        private readonly ILogger<DataHttpRepositoryBase> _logger;
-        private readonly DataHttpRepositoryBase _options;
-        private readonly IHystrixCommandFactory _hystrixCommandFactory;
+        protected readonly ILogger<DataHttpRepositoryBase> _logger;
+        protected readonly DataHttpRepositoryOptions _options;
+        protected readonly IHystrixCommandFactory _hystrixCommandFactory;
 
         public DataHttpRepositoryBase(HystrixCommandFactory hystrixCommandFactory, ILogger<DataHttpRepositoryBase> logger,
-            DataHttpRepositoryBase options)
+            DataHttpRepositoryOptions options)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _options = options ?? throw new ArgumentNullException(nameof(options));
