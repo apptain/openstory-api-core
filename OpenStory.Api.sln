@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Auth.Token.Jwt", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Api.Http.Bindings", "app\OpenStory.Api.Http.Bindings\OpenStory.Api.Http.Bindings.csproj", "{3D1625A0-071D-43B2-823B-D43641567218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Api.Services", "app\OpenStory.Api.Services\OpenStory.Api.Services.csproj", "{2A9C01A5-CEA5-415C-A473-A46E862993C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{3D1625A0-071D-43B2-823B-D43641567218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D1625A0-071D-43B2-823B-D43641567218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D1625A0-071D-43B2-823B-D43641567218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A9C01A5-CEA5-415C-A473-A46E862993C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9C01A5-CEA5-415C-A473-A46E862993C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9C01A5-CEA5-415C-A473-A46E862993C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9C01A5-CEA5-415C-A473-A46E862993C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +139,7 @@ Global
 		{43B9C0F6-BB5B-43E9-8C58-8EE43E11B022} = {8C4F8D76-50C3-447F-8FB7-8F2E13AF8902}
 		{11991C23-39B1-44A5-A924-02F50FD82350} = {8C4F8D76-50C3-447F-8FB7-8F2E13AF8902}
 		{3D1625A0-071D-43B2-823B-D43641567218} = {BEC2641B-3322-4C44-A3C2-214208E4E8FC}
+		{2A9C01A5-CEA5-415C-A473-A46E862993C7} = {BEC2641B-3322-4C44-A3C2-214208E4E8FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7367170C-E4D6-4513-982C-0F56E70A3B7E}

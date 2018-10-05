@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace OpenStory.Data.Http
 {
-    public interface IDataHttpService
+    public interface IDataHttpProxyingService
     {     
         Task<KeyValuePair<object, object>> SessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
     }
