@@ -19,7 +19,7 @@ namespace OpenStory.Api.Http.Tests
         [TestMethod]
         public void ReturnsStoriesWithCorrectTitlesAuthorAndContent()
         {
-            var mockRepository = new Mock<IDataRepository>();
+            var mockRepository = new Mock<IDataRepo>();
 
             var fakeStories = new Faker<Story>()
                 .RuleFor(u => u.Date, (f, u) => f.Date.Past())

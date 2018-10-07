@@ -16,12 +16,12 @@ using OpenStory.Data.Http;
 
 namespace OpenStory.Api.Data.Http.Mongo
 {
-    public class MongoDataService : DataHttpRepositoryBase
+    public class MongoDataService : HttpDataRepositoryServiceBase
     {
         private readonly MongoProvider _mongoProvider;
 
         public MongoDataService(HystrixCommandFactory hystrixCommandFactory, 
-            ILogger<DataHttpRepositoryBase> logger, DataHttpRepositoryOptions options) : 
+            ILogger<HttpDataRepositoryServiceBase> logger, HttpDataRepositoryConfig options) : 
             base(hystrixCommandFactory, logger, options)
         {
             _mongoProvider = new MongoProvider(options);

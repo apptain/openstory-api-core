@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OpenStory.Data.Http
 {
-    public class DataHttpRepositoryOptions
+    public class HttpDataRepositoryConfig
     {
         public string ConnectionString { get; set; }
 

@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace OpenStory.Api.Http.Bindings
+namespace OpenStory.Data.Provider
 {
     public class Class1
     {
-
     }
 }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace OpenStory.Data
 {
     /// <summary>
     /// Provides a base repository capable of retrieving and persisting information.
     /// </summary>
-    public abstract class DataRepositoryBase : IDataRepository
+    public abstract class DataRepoBase : IDataRepo
     {
         public async Task<T> Get<T, TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {

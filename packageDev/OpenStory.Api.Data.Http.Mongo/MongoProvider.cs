@@ -12,7 +12,7 @@ namespace OpenStory.Api.Data.Http.Mongo
         private readonly IMongoClient client;
         private readonly IMongoDatabase db;
 
-        public MongoProvider(DataHttpRepositoryOptions options)
+        public MongoProvider(HttpDataRepositoryConfig options)
         {
             client = new MongoClient(options.ConnectionString);
             db = client.GetDatabase(options.DatabaseName);

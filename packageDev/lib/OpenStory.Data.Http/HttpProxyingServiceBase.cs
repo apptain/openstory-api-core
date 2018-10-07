@@ -5,17 +5,15 @@ using System.Threading.Tasks;
 using Hystrix.Dotnet;
 using Microsoft.Extensions.Logging;
 
-
 namespace OpenStory.Data.Http
 {
-    public abstract class DataHttpProxyingServiceBase : DataRepositoryBase, IDataHttpProxyingService
+    public abstract class HttpProxyingServiceBase : DataRepositoryBase, IHttpProxyingService
     {
-        protected readonly ILogger<DataHttpProxyingServiceBase> _logger;
-        protected readonly DataHttpProxyingServiceOptions _options;
-        protected readonly IHystrixCommandFactory _hystrixCommandFactory;
+        protected IHystrixCommandFactory _hystrixCommandFactory { get; }
+        protected HttpProxyingServiceConfig _options { get; }
 
-        public DataHttpProxyingServiceBase(HystrixCommandFactory hystrixCommandFactory, ILogger<DataHttpProxyingServiceBase> logger,
-             DataHttpProxyingServiceOptions options)
+        public HttpProxyingServiceBase(HystrixCommandFactory hystrixCommandFactory, ILogger<HttpProxyingServiceBase> logger,
+             HttpProxyingServiceConfig options)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _options = options ?? throw new ArgumentNullException(nameof(options));

@@ -1,22 +1,22 @@
-﻿using OpenStory.Data;
+﻿using Microsoft.Extensions.Logging;
+using OpenStory.Data;
 using OpenStory.Data.Http;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace OpenStory.Api.Services
 {
-    public class StoryService
+    public class StoryService 
     {
-        private readonly IDataRepository _dataRepository;
-        private readonly 
+        private readonly ILogger<StoryService> _logger;
+        private readonly IDataRepo _dataRepository;
 
-        public MongoDataService(HystrixCommandFactory hystrixCommandFactory,
-            ILogger<DataHttpRepositoryBase> logger, DataHttpRepositoryOptions options) :
-            base(hystrixCommandFactory, logger, options)
-        {
-            _mongoProvider = new MongoProvider(options);
-        }
+        //private readonly 
+
+        //public MongoDataService(HystrixCommandFactory hystrixCommandFactory,
+        //    ILogger<DataHttpRepositoryBase> logger, DataHttpRepositoryOptions options) :
+        //    base(hystrixCommandFactory, logger, options)
+        //{
+        //    _mongoProvider = new MongoProvider(options);
+        //}
 
         //protected override async Task<ICollection<T>> OnGet<T>(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         //{

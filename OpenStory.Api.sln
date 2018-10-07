@@ -33,23 +33,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{ED346DDC-7DA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Api.Http.Tests", "tests\app\OpenStory.Api.Http.Tests\OpenStory.Api.Http.Tests.csproj", "{23512174-E601-482C-9B96-87A5F266CF73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Data.Http", "packageDev\lib\OpenStory.Data.Http\OpenStory.Data.Http.csproj", "{8CB4118B-1CA6-4F5F-AA27-777210DEDFDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Data.Http.Proxy", "packageDev\lib\OpenStory.Data.Http\OpenStory.Data.Http.Proxy.csproj", "{8CB4118B-1CA6-4F5F-AA27-777210DEDFDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Sagas", "packageDev\lib\OpenStory.Sagas\OpenStory.Sagas.csproj", "{7D5AE15F-662F-4941-B61E-8E115518ECEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Saga", "packageDev\lib\OpenStory.Sagas\OpenStory.Saga.csproj", "{7D5AE15F-662F-4941-B61E-8E115518ECEE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Api.Data.Http.Mongo", "packageDev\OpenStory.Api.Data.Http.Mongo\OpenStory.Api.Data.Http.Mongo.csproj", "{813AB688-A38F-47EB-AB56-49655835CE39}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Auth.Http", "packageDev\lib\OpenStory.Auth.Http\OpenStory.Auth.Http.csproj", "{CC5F8896-8C73-4FAB-8051-2FD251F447A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Auth.Token", "packageDev\lib\OpenStory.Auth.Token\OpenStory.Auth.Token.csproj", "{C48A66BC-70E0-4D43-BA5A-4E5C991D170A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Data.Provide.Auth.Token", "packageDev\lib\OpenStory.Auth.Token\OpenStory.Data.Provide.Auth.Token.csproj", "{C48A66BC-70E0-4D43-BA5A-4E5C991D170A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Api.Auth.Http.OAuth.Azure", "packageDev\OpenStory.Api.Auth.Http.OAuth.Azure\OpenStory.Api.Auth.Http.OAuth.Azure.csproj", "{43B9C0F6-BB5B-43E9-8C58-8EE43E11B022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Api.Auth.Http.OAuth.Azure", "packageDev\OpenStory.Api.Auth.Http.OAuth.Azure\OpenStory.Api.Auth.Http.OAuth.Azure.csproj", "{43B9C0F6-BB5B-43E9-8C58-8EE43E11B022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Auth.Token.Jwt", "packageDev\OpenStory.Auth.Token.Jwt\OpenStory.Auth.Token.Jwt.csproj", "{11991C23-39B1-44A5-A924-02F50FD82350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Auth.Token.Jwt", "packageDev\OpenStory.Auth.Token.Jwt\OpenStory.Auth.Token.Jwt.csproj", "{11991C23-39B1-44A5-A924-02F50FD82350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Api.Http.Bindings", "app\OpenStory.Api.Http.Bindings\OpenStory.Api.Http.Bindings.csproj", "{3D1625A0-071D-43B2-823B-D43641567218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Api.Http.Bindings", "app\OpenStory.Api.Http.Bindings\OpenStory.Api.Http.Bindings.csproj", "{3D1625A0-071D-43B2-823B-D43641567218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Api.Services", "app\OpenStory.Api.Services\OpenStory.Api.Services.csproj", "{2A9C01A5-CEA5-415C-A473-A46E862993C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenStory.Api.Services", "app\OpenStory.Api.Services\OpenStory.Api.Services.csproj", "{2A9C01A5-CEA5-415C-A473-A46E862993C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStory.Data.Provide", "packageDev\lib\OpenStory.Data.Provider\OpenStory.Data.Provide.csproj", "{8F41CD27-9B8E-426F-A506-14E608E99180}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{2A9C01A5-CEA5-415C-A473-A46E862993C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A9C01A5-CEA5-415C-A473-A46E862993C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A9C01A5-CEA5-415C-A473-A46E862993C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F41CD27-9B8E-426F-A506-14E608E99180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F41CD27-9B8E-426F-A506-14E608E99180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F41CD27-9B8E-426F-A506-14E608E99180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F41CD27-9B8E-426F-A506-14E608E99180}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +146,7 @@ Global
 		{11991C23-39B1-44A5-A924-02F50FD82350} = {8C4F8D76-50C3-447F-8FB7-8F2E13AF8902}
 		{3D1625A0-071D-43B2-823B-D43641567218} = {BEC2641B-3322-4C44-A3C2-214208E4E8FC}
 		{2A9C01A5-CEA5-415C-A473-A46E862993C7} = {BEC2641B-3322-4C44-A3C2-214208E4E8FC}
+		{8F41CD27-9B8E-426F-A506-14E608E99180} = {491C65B5-5044-4608-8C47-A1ADAEB2FA9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7367170C-E4D6-4513-982C-0F56E70A3B7E}

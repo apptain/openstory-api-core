@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 
 namespace OpenStory.Data.Http
 {
-    public class DataHttpProxyingServiceOptions
+    public class HttpProxyingServiceConfig
     {
-        public DataHttpProxyingServiceOptions()
+        public HttpProxyingServiceConfig()
         {
             Domain = "OpenStory";
         }
-
 
         public Uri BaseAddress { get; set; }
 

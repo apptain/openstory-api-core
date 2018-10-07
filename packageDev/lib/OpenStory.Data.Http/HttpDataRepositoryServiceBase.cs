@@ -6,14 +6,13 @@ using System.Text;
 
 namespace OpenStory.Data.Http
 {
-    public abstract class DataHttpRepositoryBase : DataRepositoryBase
+    public abstract class HttpDataRepositoryServiceBase : DataRepositoryBase, IHttpDataRepositoryConfig
     {
-        protected readonly ILogger<DataHttpRepositoryBase> _logger;
-        protected readonly DataHttpRepositoryOptions _options;
-        protected readonly IHystrixCommandFactory _hystrixCommandFactory;
+        private HttpDataRepositoryConfig _options { get; }
+        private IHystrixCommandFactory _hystrixCommandFactory { get; }
 
-        public DataHttpRepositoryBase(HystrixCommandFactory hystrixCommandFactory, ILogger<DataHttpRepositoryBase> logger,
-            DataHttpRepositoryOptions options)
+        public HttpDataRepositoryServiceBase(HystrixCommandFactory hystrixCommandFactory, ILogger<IDataRepo> logger,
+            HttpDataRepositoryConfig options)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _options = options ?? throw new ArgumentNullException(nameof(options));
