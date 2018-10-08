@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Hystrix.Dotnet;
 using Microsoft.Extensions.Logging;
 
 namespace OpenStory.Data
@@ -9,8 +10,25 @@ namespace OpenStory.Data
     /// <summary>
     /// Provides a base repository capable of retrieving and persisting information.
     /// </summary>
-    public abstract class DataRepoBase : IDataRepo
+    public abstract class DataServiceBase : IDataService
     {
+        /// <summary>
+        /// _config should be set in constructor as needed
+        /// </summary>
+        public IDataServiceConfig _config { get; private set; }
+
+        public IHystrixCommandFactory _hystrixCommandFactory { get; private set; }
+
+        public ILogger<IDataService> _logger { get; private set; }
+
+        public DataServiceBase(IDataServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
+            ILogger<IDataService> logger)
+        {            
+            _config = config ?? throw new ArgumentNullException(nameof(config));
+            _hystrixCommandFactory = hystrixCommandFactory ?? throw new ArgumentNullException(nameof(hystrixCommandFactory));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
         public async Task<T> Get<T, TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();

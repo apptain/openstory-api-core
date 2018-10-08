@@ -19,9 +19,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="HttpDataProxyService\" />
-    <Folder Include="HttpDataProxyRepo\" />
-  </ItemGroup>
-
 </Project>

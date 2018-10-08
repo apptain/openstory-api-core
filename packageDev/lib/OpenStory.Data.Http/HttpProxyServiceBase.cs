@@ -7,22 +7,11 @@ using Microsoft.Extensions.Logging;
 
 namespace OpenStory.Data.Http
 {
-    public abstract class HttpProxyingServiceBase : DataRepositoryBase, IHttpProxyingService
+    public abstract class HttpProxyServiceBase : DataServiceBase, IHttpProxyService
     {
-        protected IHystrixCommandFactory _hystrixCommandFactory { get; }
-        protected HttpProxyingServiceConfig _options { get; }
-
-        public HttpProxyingServiceBase(HystrixCommandFactory hystrixCommandFactory, ILogger<HttpProxyingServiceBase> logger,
-             HttpProxyingServiceConfig options)
-        {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _options = options ?? throw new ArgumentNullException(nameof(options));
-
-            if(hystrixCommandFactory == null)
-            {
-                throw new ArgumentNullException(nameof(hystrixCommandFactory));
-            }
-            _hystrixCommandFactory = hystrixCommandFactory;
+        public HttpProxyServiceBase(IDataServiceConfig config, HystrixCommandFactory hystrixCommandFactory,
+           ILogger<IDataService> logger) : base (config, hystrixCommandFactory, logger)
+        {        
         }
 
         public async Task<KeyValuePair<object, object>> SessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)

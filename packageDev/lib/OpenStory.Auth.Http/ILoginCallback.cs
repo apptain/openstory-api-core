@@ -6,5 +6,6 @@ namespace OpenStory.Api.Auth
 {
     public interface IAuthLoginCallback
     {
+        public 
     }
 }

@@ -14,9 +14,9 @@ namespace OpenStory.Api.Http.Controllers
     public class StoryController: Controller
     {
         private readonly ILogger<StoryController> _logger;
-        private readonly IDataRepo _dataService;
+        private readonly IDataService _dataService;
 
-        public StoryController(ILogger<StoryController> logger, IDataRepo dataService)
+        public StoryController(ILogger<StoryController> logger, IDataService dataService)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));

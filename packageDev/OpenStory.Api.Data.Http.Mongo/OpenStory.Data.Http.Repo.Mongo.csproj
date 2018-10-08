@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\lib\OpenStory.Data.Http\OpenStory.Data.Http.Proxy.csproj" />
+    <ProjectReference Include="..\lib\OpenStory.Data.Http.Repo\OpenStory.Data.Http.Repo.csproj" />
     <ProjectReference Include="..\lib\OpenStory.Data\OpenStory.Data.csproj" />
   </ItemGroup>
 

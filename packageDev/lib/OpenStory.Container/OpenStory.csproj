@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OpenStory.Data.Provider\OpenStory.Data.Provide.csproj" />
     <ProjectReference Include="..\OpenStory.Data\OpenStory.Data.csproj" />
+    <ProjectReference Include="..\OpenStory.Sagas\OpenStory.Saga.csproj" />
   </ItemGroup>
 
 </Project>

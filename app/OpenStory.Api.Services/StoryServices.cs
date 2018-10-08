@@ -7,7 +7,9 @@ namespace OpenStory.Api.Services
     public class StoryService 
     {
         private readonly ILogger<StoryService> _logger;
-        private readonly IDataRepo _dataRepository;
+        private readonly IDataService _dataRepository;
+
+        private readonly 
 
         //private readonly 
 

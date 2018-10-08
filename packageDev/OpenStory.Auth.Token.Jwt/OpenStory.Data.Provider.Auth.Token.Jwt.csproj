@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\lib\OpenStory.Auth.Token\OpenStory.Data.Provide.Auth.Token.csproj" />
+    <ProjectReference Include="..\lib\OpenStory.Data.Provider\OpenStory.Data.Provide.csproj" />
   </ItemGroup>
 
 </Project>

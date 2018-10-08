@@ -1,12 +1,19 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Hystrix.Dotnet;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenStory.Data
 {
-    public interface IDataRepo
+    public interface IDataService
     {
+        IDataServiceConfig _config { get; }
+
+        IHystrixCommandFactory _hystrixCommandFactory { get; }
+
+        ILogger<IDataService> _logger { get; }
+
         //Gets one based on identifier value matching key
         Task<T> Get<T, TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
 

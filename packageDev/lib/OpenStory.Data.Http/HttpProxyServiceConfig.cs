@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace OpenStory.Data.Http
 {
-    public class HttpProxyingServiceConfig
+    public class HttpProxyServiceConfig : IDataServiceConfig
     {
-        public HttpProxyingServiceConfig()
+        public string Name { get; }
+
+        public HttpProxyServiceConfig()
         {
             Domain = "OpenStory";
         }

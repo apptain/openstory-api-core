@@ -12,19 +12,42 @@ using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
+using OpenStory.Data;
 using OpenStory.Data.Http;
 
 namespace OpenStory.Api.Data.Http.Mongo
 {
-    public class MongoDataService : HttpDataRepositoryServiceBase
+    public class MongoDataService : HttpRepoServiceBase
     {
-        private readonly MongoProvider _mongoProvider;
+        private readonly IMongoClient client;
+        private readonly IMongoDatabase db;
 
-        public MongoDataService(HystrixCommandFactory hystrixCommandFactory, 
-            ILogger<HttpDataRepositoryServiceBase> logger, HttpDataRepositoryConfig options) : 
-            base(hystrixCommandFactory, logger, options)
+        /// <summary>
+        /// BsonDocument IMongoCollection from configured mongodb
+        /// </summary>
+        /// <param name="collectionName"></param>
+        /// <returns>Bson Document Collection</returns>
+        protected IMongoCollection<BsonDocument> Collection(string collectionName)
         {
-            _mongoProvider = new MongoProvider(options);
+            return db.GetCollection<BsonDocument>(collectionName);
+        }
+
+        /// <summary>
+        /// Generic Typed IMongoCollection from configured mongodb
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collectionName"></param>
+        /// <returns>Generic type T</returns>
+        protected IMongoCollection<T> Collection<T>(string collectionName)
+        {
+            return db.GetCollection<T>(collectionName);
+        }
+
+        public MongoDataService(HttpRepoServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
+            ILogger<IDataService> logger) : base(config, hystrixCommandFactory, logger)
+        {
+            client = new MongoClient(config.ConnectionString);
+            db = client.GetDatabase(config.DatabaseName);
         }
 
         protected override async Task<ICollection<T>> OnGet<T>(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
@@ -39,7 +62,7 @@ namespace OpenStory.Api.Data.Http.Mongo
                 }
                 var collectionName = context["CollectionName"].ToString();
 
-                var collection = _mongoProvider.Collection(collectionName);
+                var collection = Collection(collectionName);
                 var entities = await collection.Find(new BsonDocument()).ToListAsync();
 
                 _logger.LogTrace("Mongo Got");
@@ -67,7 +90,7 @@ namespace OpenStory.Api.Data.Http.Mongo
 
                 var document = entity.ToBsonDocument();
                 //TODO make use of InsertOneOptons to pass cancellationToken
-                await _mongoProvider.Collection(collectionName).InsertOneAsync(document);
+                await Collection(collectionName).InsertOneAsync(document);
 
                 _logger.LogTrace("Mongo Save");
 
