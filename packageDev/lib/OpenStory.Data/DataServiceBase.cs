@@ -10,7 +10,7 @@ namespace OpenStory.Data
     /// <summary>
     /// Provides a base repository capable of retrieving and persisting information.
     /// </summary>
-    public abstract class DataServiceBase : IDataService
+    public abstract class DataServiceBase<T> : IDataService<T>
     {
         /// <summary>
         /// _config should be set in constructor as needed
@@ -19,17 +19,17 @@ namespace OpenStory.Data
 
         public IHystrixCommandFactory _hystrixCommandFactory { get; private set; }
 
-        public ILogger<IDataService> _logger { get; private set; }
+        public ILogger<IDataService<T>> _logger { get; private set; }
 
         public DataServiceBase(IDataServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
-            ILogger<IDataService> logger)
+            ILogger<IDataService<T>> logger)
         {            
             _config = config ?? throw new ArgumentNullException(nameof(config));
             _hystrixCommandFactory = hystrixCommandFactory ?? throw new ArgumentNullException(nameof(hystrixCommandFactory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<T> Get<T, TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        public async Task<T> Get<TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -42,66 +42,66 @@ namespace OpenStory.Data
             throw new NotImplementedException();
         }
 
-        public async Task<ICollection<T>> Get<T>(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        public async Task<ICollection<T>> Get(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await OnGet<T>(filters, cancellationToken, context ?? new Dictionary<string, object>());
+            return await OnGet(filters, cancellationToken, context ?? new Dictionary<string, object>());
         }
 
-        protected virtual async Task<ICollection<T>> OnGet<T>(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected virtual async Task<ICollection<T>> OnGet(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             await Task.Delay(0);
             throw new NotImplementedException();
         }
 
-        public async Task<T> Create<T>(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        public async Task<T> Create(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await OnCreate<T>(entity, cancellationToken, context ?? new Dictionary<string, object>());
+            return await OnCreate(entity, cancellationToken, context ?? new Dictionary<string, object>());
         }
 
-        protected virtual async Task<T> OnCreate<T>(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected virtual async Task<T> OnCreate(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             await Task.Delay(0);
             throw new NotImplementedException();
         }
 
-        public async Task<T> Create<T>(ICollection<T> entities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        public async Task<T> Create(ICollection<T> entities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await OnCreate<T>(entities, cancellationToken, context ?? new Dictionary<string, object>());
+            return await OnCreate(entities, cancellationToken, context ?? new Dictionary<string, object>());
         }
 
-        protected virtual async Task<T> OnCreate<T>(ICollection<T> entitities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected virtual async Task<T> OnCreate(ICollection<T> entitities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             await Task.Delay(0);
             throw new NotImplementedException();
         }
 
-        public async Task<T> Update<T>(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        public async Task<T> Update(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await OnUpdate<T>(entity, cancellationToken, context ?? new Dictionary<string, object>());
+            return await OnUpdate(entity, cancellationToken, context ?? new Dictionary<string, object>());
         }
 
-        protected virtual async Task<T> OnUpdate<T>(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected virtual async Task<T> OnUpdate(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             await Task.Delay(0);
             throw new NotImplementedException();
         }
 
-        public async Task<T> Update<T>(ICollection<T> entities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        public async Task<T> Update(ICollection<T> entities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await OnUpdate<T>(entities, cancellationToken, context ?? new Dictionary<string, object>());
+            return await OnUpdate(entities, cancellationToken, context ?? new Dictionary<string, object>());
         }
 
-        protected virtual async Task<T> OnUpdate<T>(ICollection<T> entities,  CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected virtual async Task<T> OnUpdate(ICollection<T> entities,  CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             await Task.Delay(0);
             throw new NotImplementedException();

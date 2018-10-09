@@ -7,10 +7,10 @@ using Microsoft.Extensions.Logging;
 
 namespace OpenStory.Data.Http
 {
-    public abstract class HttpProxyServiceBase : DataServiceBase, IHttpProxyService
+    public abstract class HttpProxyServiceBase<T> : DataServiceBase<T>, IHttpProxyService<T>
     {
         public HttpProxyServiceBase(IDataServiceConfig config, HystrixCommandFactory hystrixCommandFactory,
-           ILogger<IDataService> logger) : base (config, hystrixCommandFactory, logger)
+           ILogger<IDataService<T>> logger) : base (config, hystrixCommandFactory, logger)
         {        
         }
 

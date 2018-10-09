@@ -6,15 +6,15 @@ using OpenStory.Data;
 
 namespace OpenStory
 {
-    public class Container : DataServiceBase, IContainer
+    public class Container<T> : DataServiceBase<T>, IContainer<T>
     {
-        public IDictionary<IDataServiceConfig, IDataService> _dataServices { get; private set; }
+        public GenericDictionary _dataServices { get; private set; }
 
-        public Container(IDictionary<IDataServiceConfig, IDataService> dataService, IDataServiceConfig config, 
-            HystrixCommandFactory hystrixCommandFactory, ILogger<IDataService> logger) : 
+        public Container(GenericDictionary dataServices, IDataServiceConfig config, 
+            HystrixCommandFactory hystrixCommandFactory, ILogger<IDataService<T>> logger) : 
             base(config, hystrixCommandFactory, logger)
         {
-            _dataServices = _dataServices ?? throw new ArgumentNullException(nameof(dataService));
+            _dataServices = dataServices ?? throw new ArgumentNullException(nameof(dataServices));
         }
     }
 }

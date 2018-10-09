@@ -15,18 +15,18 @@ using OpenStory.Data.Provide;
 
 namespace OpenStory.Auth.Token.Jwt
 {
-    public class JwtProviderService : ProviderServiceBase, IProviderService
+    public class JwtProviderService<T> : ProviderServiceBase<T>, IProviderService<T>
     {
         private readonly string _privateKey;
 
         public JwtProviderService(JwtAuthProviderServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
-            ILogger<IDataService> logger) : base((IDataServiceConfig)config, hystrixCommandFactory, logger)
+            ILogger<IDataService<T>> logger) : base((IDataServiceConfig)config, hystrixCommandFactory, logger)
         {
             //TODO Add handling for machine encryption
             _privateKey = config.PrivateKey;
         }
 
-        //protected override async Task<ICollection<T>> OnCreate<T>(IDictionary<string, object> filters = null,
+        //protected override async Task<ICollection<T>> OnCreate(IDictionary<string, object> filters = null,
         //    CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         //{
         //    var symmetricKey = Convert.FromBase64String(_options.PrivateKey);

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace OpenStory
 {
-    public interface IContainer : IDataService
+    public interface IContainer<T> : IDataService<T>
     {
-        IDictionary<IDataServiceConfig, IDataService> _dataServices { get; }
+       GenericDictionary _dataServices { get; }
     }
 }

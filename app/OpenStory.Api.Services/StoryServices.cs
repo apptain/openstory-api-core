@@ -7,9 +7,12 @@ namespace OpenStory.Api.Services
     public class StoryService 
     {
         private readonly ILogger<StoryService> _logger;
-        private readonly IDataService _dataRepository;
 
-        private readonly 
+  
+
+        //private readonly IDataService<StoryService> _dataRepository;
+
+        //private readonly 
 
         //private readonly 
 
@@ -20,7 +23,7 @@ namespace OpenStory.Api.Services
         //    _mongoProvider = new MongoProvider(options);
         //}
 
-        //protected override async Task<ICollection<T>> OnGet<T>(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        //protected override async Task<ICollection<T>> OnGet(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         //{
         //    try
         //    {
@@ -38,7 +41,7 @@ namespace OpenStory.Api.Services
         //    }
         //}
 
-        //protected override async Task<T> OnCreate<T>(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        //protected override async Task<T> OnCreate(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         //{
         //    try
         //    {

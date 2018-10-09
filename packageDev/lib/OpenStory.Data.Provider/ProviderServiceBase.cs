@@ -6,10 +6,10 @@ using Microsoft.Extensions.Logging;
 
 namespace OpenStory.Data.Provide
 {
-    public abstract class ProviderServiceBase : DataServiceBase
+    public abstract class ProviderServiceBase<T> : DataServiceBase<T>
     {
         public ProviderServiceBase(IDataServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
-            ILogger<IDataService> logger) : base(config, hystrixCommandFactory, logger)
+            ILogger<IDataService<T>> logger) : base(config, hystrixCommandFactory, logger)
         {
         }
     }

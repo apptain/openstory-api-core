@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using OpenStory.Data;
 using OpenStory.Api.Http.Linking;
-using OpenStory.Api.Services.Story;
+using OpenStory.Api.Domain;
 
 namespace OpenStory.Api.Http.Controllers
 {
@@ -14,9 +14,9 @@ namespace OpenStory.Api.Http.Controllers
     public class StoryController: Controller
     {
         private readonly ILogger<StoryController> _logger;
-        private readonly IDataService _dataService;
+        private readonly IDataService<Story> _dataService;
 
-        public StoryController(ILogger<StoryController> logger, IDataService dataService)
+        public StoryController(ILogger<StoryController> logger, IDataService<Story> dataService)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));

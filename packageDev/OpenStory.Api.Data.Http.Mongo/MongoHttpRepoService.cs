@@ -17,7 +17,7 @@ using OpenStory.Data.Http;
 
 namespace OpenStory.Api.Data.Http.Mongo
 {
-    public class MongoDataService : HttpRepoServiceBase
+    public class MongoDataService<T> : HttpRepoServiceBase<T>
     {
         private readonly IMongoClient client;
         private readonly IMongoDatabase db;
@@ -35,22 +35,22 @@ namespace OpenStory.Api.Data.Http.Mongo
         /// <summary>
         /// Generic Typed IMongoCollection from configured mongodb
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TMongoType"></typeparam>
         /// <param name="collectionName"></param>
         /// <returns>Generic type T</returns>
-        protected IMongoCollection<T> Collection<T>(string collectionName)
+        protected IMongoCollection<TMongoType> Collection<TMongoType>(string collectionName)
         {
-            return db.GetCollection<T>(collectionName);
+            return db.GetCollection<TMongoType>(collectionName);
         }
 
         public MongoDataService(HttpRepoServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
-            ILogger<IDataService> logger) : base(config, hystrixCommandFactory, logger)
+            ILogger<IDataService<T>> logger) : base(config, hystrixCommandFactory, logger)
         {
             client = new MongoClient(config.ConnectionString);
             db = client.GetDatabase(config.DatabaseName);
         }
 
-        protected override async Task<ICollection<T>> OnGet<T>(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected override async Task<ICollection<T>> OnGet(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace OpenStory.Api.Data.Http.Mongo
             }
         }
 
-        protected override async Task<T> OnCreate<T>(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected override async Task<T> OnCreate(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
         {
             try
             {

@@ -1,6 +1,6 @@
 ﻿namespace OpenStory.Data.Http
 {
-    public interface IHttpRepoService : IDataService
+    public interface IHttpRepoService<T> : IDataService<T>
     {
         
     }
