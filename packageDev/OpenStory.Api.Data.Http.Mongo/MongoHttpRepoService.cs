@@ -50,17 +50,17 @@ namespace OpenStory.Api.Data.Http.Mongo
             db = client.GetDatabase(config.DatabaseName);
         }
 
-        protected override async Task<ICollection<T>> OnGet(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected override async Task<ICollection<T>> OnGet(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null)
         {
             try
             {
                 _logger.LogTrace("Mongo Get");
-                //requires context to be passed
-                if (!context.ContainsKey("CollectionName"))
+                //requires parameters to be passed
+                if (!parameters.ContainsKey("CollectionName"))
                 {
-                    throw new ArgumentException("CollectionName must be passed in context");
+                    throw new ArgumentException("CollectionName must be passed in parameters");
                 }
-                var collectionName = context["CollectionName"].ToString();
+                var collectionName = parameters["CollectionName"].ToString();
 
                 var collection = Collection(collectionName);
                 var entities = await collection.Find(new BsonDocument()).ToListAsync();
@@ -76,17 +76,17 @@ namespace OpenStory.Api.Data.Http.Mongo
             }
         }
 
-        protected override async Task<T> OnCreate(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected override async Task<T> OnCreate(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null)
         {
             try
             {
                 _logger.LogTrace("Mongo Save");
-                //requires context to be passed
-                if (!context.ContainsKey("CollectionName"))
+                //requires parameters to be passed
+                if (!parameters.ContainsKey("CollectionName"))
                 {
-                    throw new ArgumentException("CollectionName must be passed in context");
+                    throw new ArgumentException("CollectionName must be passed in parameters");
                 }
-                var collectionName = context["CollectionName"].ToString();
+                var collectionName = parameters["CollectionName"].ToString();
 
                 var document = entity.ToBsonDocument();
                 //TODO make use of InsertOneOptons to pass cancellationToken

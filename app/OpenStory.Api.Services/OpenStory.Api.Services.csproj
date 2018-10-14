@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\packageDev\lib\OpenStory.Container\OpenStory.csproj" />
     <ProjectReference Include="..\..\packageDev\lib\OpenStory.Data.Http\OpenStory.Data.Http.Proxy.csproj" />
     <ProjectReference Include="..\..\packageDev\lib\OpenStory.Data\OpenStory.Data.csproj" />
     <ProjectReference Include="..\OpenStory.Api.Domain\OpenStory.Api.Domain.csproj" />

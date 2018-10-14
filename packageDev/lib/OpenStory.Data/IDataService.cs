@@ -15,22 +15,22 @@ namespace OpenStory.Data
         ILogger<IDataService<T>> _logger { get; }
 
         //Gets one based on identifier value matching key
-        Task<T> Get<TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        Task<T> Get<TIdentiifer>(TIdentiifer identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
 
-        //Gets multiple. Filters should be handled and passed with context
-        Task<ICollection<T>> Get(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        //Gets multiple. Filters should be handled and passed with parameters
+        Task<ICollection<T>> Get(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
 
-        Task<T> Create(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        Task<T> Create(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
 
-        Task<T> Create(ICollection<T> entitities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        Task<T> Create(ICollection<T> entitities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
 
-        Task<T> Update(T entitity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        Task<T> Update(T entitity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
 
-        Task<T> Update(ICollection<T> entitities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        Task<T> Update(ICollection<T> entitities, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
 
         //Deletes based on identifier value matching key
-        Task<TDeleteResult> Delete<TDeleteResult, TIdentifier>(TIdentifier identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        Task<TDeleteResult> Delete<TDeleteResult, TIdentifier>(TIdentifier identifier, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
 
-        Task<TDeleteResult> Delete<TDeleteResult, TIdentifier>(ICollection<TIdentifier> identifiers, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null);
+        Task<TDeleteResult> Delete<TDeleteResult, TIdentifier>(ICollection<TIdentifier> identifiers, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null);
     }
 }

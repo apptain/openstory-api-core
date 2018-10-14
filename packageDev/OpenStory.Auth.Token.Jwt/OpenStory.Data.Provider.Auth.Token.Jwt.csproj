@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\lib\OpenStory.Container\OpenStory.csproj" />
     <ProjectReference Include="..\lib\OpenStory.Data.Provider\OpenStory.Data.Provide.csproj" />
   </ItemGroup>
 

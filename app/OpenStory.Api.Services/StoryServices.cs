@@ -1,62 +1,66 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Hystrix.Dotnet;
+using Microsoft.Extensions.Logging;
 using OpenStory.Data;
 using OpenStory.Data.Http;
+using OpenStory.Identity;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace OpenStory.Api.Services
 {
-    public class StoryService 
+    public class StoryService<Story> : Container<Story>
     {
-        private readonly ILogger<StoryService> _logger;
+        private readonly IDataService<Story> _storyDataService;
 
-  
+        public StoryService(Dictionary<string, IDataService<object>> dataServices, IDataServiceConfig config, 
+            HystrixCommandFactory hystrixCommandFactory, ILogger<IDataService<Story>> logger) :
+            base(dataServices, config, hystrixCommandFactory, logger)
+        {
+            if (!dataServices.ContainsKey("StoryDataService"))
+            {
+                throw new ArgumentNullException("AuthenticatedIdentity",
+                    "AuthenticatedIdentity required in parameters");
+            }
+            
+        }
 
-        //private readonly IDataService<StoryService> _dataRepository;
-
-        //private readonly 
-
-        //private readonly 
-
-        //public MongoDataService(HystrixCommandFactory hystrixCommandFactory,
-        //    ILogger<DataHttpRepositoryBase> logger, DataHttpRepositoryOptions options) :
-        //    base(hystrixCommandFactory, logger, options)
-        //{
-        //    _mongoProvider = new MongoProvider(options);
-        //}
-
-        //protected override async Task<ICollection<T>> OnGet(IDictionary<string, object> filters = null, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
-        //{
-        //    try
-        //    {
-        //        _logger.LogTrace("Mongo Get");
-
-
-        //        _logger.LogTrace("Mongo Got");
-        //        return (ICollection<T>)Convert.ChangeType(entities, typeof(T));
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        //TODO improve error handling 
-        //        _logger.LogError("Error for Mongo OnGet", exception);
-        //        throw exception;
-        //    }
-        //}
-
-        //protected override async Task<T> OnCreate(T entity, CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
-        //{
-        //    try
-        //    {
-        //        _logger.LogTrace("Mongo Save");
+        protected override async Task<Story> OnCreate(Story entity, 
+            CancellationToken cancellationToken = default(CancellationToken), 
+            IDictionary<string, object> parameters = null)
+        {
+            try
+            {
+                _logger.LogTrace("Story Create Call");
+                var story = await _storyDataService.Create(entity, cancellationToken, parameters);
+                return story;
+            }
+            catch (Exception exception)
+            {
+                //TODO improve error handling 
+                _logger.LogError("Error for Mongo OnGet", exception);
+                throw exception;
+            }
+        }
 
 
-        //        //TODO require identity paramaters to be passed and then find inserted doc?
-        //        return (T)Convert.ChangeType(entity, typeof(T));
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        //TODO improve error handling 
-        //        _logger.LogError("Error for Mongo OnGet", exception);
-        //        throw exception;
-        //    }
-        //}
+        protected override async Task<ICollection<Story>> OnGet(IDictionary<string, object> filters = null, 
+            CancellationToken cancellationToken = default(CancellationToken), 
+            IDictionary<string, object> parameters = null)
+        {
+            try
+            {
+                _logger.LogTrace("Story Create Call");
+                return  await _storyDataService.Get(filters, cancellationToken, parameters);
+            }
+            catch (Exception exception)
+            {
+                //TODO improve error handling 
+                _logger.LogError("Error for Mongo OnGet", exception);
+                throw exception;
+            }
+        }
+
     }
 }

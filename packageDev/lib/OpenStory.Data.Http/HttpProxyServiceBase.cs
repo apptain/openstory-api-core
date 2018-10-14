@@ -14,14 +14,14 @@ namespace OpenStory.Data.Http
         {        
         }
 
-        public async Task<KeyValuePair<object, object>> SessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        public async Task<KeyValuePair<object, object>> SessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await OnSessionTokens(cancellationToken, context ?? new Dictionary<string, object>());
+            return await OnSessionTokens(cancellationToken, parameters ?? new Dictionary<string, object>());
         }
 
-        protected virtual async Task<KeyValuePair<object, object>> OnSessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> context = null)
+        protected virtual async Task<KeyValuePair<object, object>> OnSessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null)
         {
             await Task.Delay(0);
             throw new NotImplementedException();

@@ -7,6 +7,6 @@ namespace OpenStory
 {
     public interface IContainer<T> : IDataService<T>
     {
-       GenericDictionary _dataServices { get; }
+        Dictionary<string, IDataService<object>> _dataServices { get; }
     }
 }

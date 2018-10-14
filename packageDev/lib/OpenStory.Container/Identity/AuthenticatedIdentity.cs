@@ -3,7 +3,7 @@ using System.Security.Principal;
 
 namespace OpenStory.Identity
 {
-    public class AuhenticatedIdentity : IAuthenticatedIdentity
+    public class AuthenticatedIdentity : IAuthenticatedIdentity
     {
         public string Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace OpenStory.Identity
 
         public string Name { get; set; }
 
-        public AuhenticatedIdentity(string id, string authenticationType, string externalId)
+        public AuthenticatedIdentity(string id, string authenticationType, string externalId)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id));
             AuthenticationType = authenticationType;

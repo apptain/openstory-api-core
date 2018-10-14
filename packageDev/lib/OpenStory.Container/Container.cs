@@ -8,9 +8,9 @@ namespace OpenStory
 {
     public class Container<T> : DataServiceBase<T>, IContainer<T>
     {
-        public GenericDictionary _dataServices { get; private set; }
+        public Dictionary<string, IDataService<object>> _dataServices { get; private set; }
 
-        public Container(GenericDictionary dataServices, IDataServiceConfig config, 
+        public Container(Dictionary<string, IDataService<object>> dataServices, IDataServiceConfig config, 
             HystrixCommandFactory hystrixCommandFactory, ILogger<IDataService<T>> logger) : 
             base(config, hystrixCommandFactory, logger)
         {
