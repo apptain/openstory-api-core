@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +16,7 @@ using OpenStory.Data;
 
 namespace OpenStory.Api.Http.Controllers
 {
-    public class AuthenticationController: Controller
+    public class AuthenticationController : Controller
     {
         private readonly ILogger<AuthenticationController> _logger;
         private readonly IDataService<User> _userDataService;
@@ -29,7 +31,7 @@ namespace OpenStory.Api.Http.Controllers
         [HttpGet, Route("oauth/login/callback", Name = OAuthLinkRelations.OAuthResource.LoginCallback)]
         [ProducesResponseType(typeof(SerializableError), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Task<HttpResponseMessage>), StatusCodes.Status200OK)]
-        public async Task<HttpResponseMessage> OAuthLoginCallback()
+        public async Task<IActionResult> OAuthLoginCallback()
         {
             _logger.LogInformation("OAuth Login Callbacack");
 
@@ -77,23 +79,15 @@ namespace OpenStory.Api.Http.Controllers
                 throw new Exception("Not Authenticated");
             }
 
-            return null;
+            string jwToken = await _jwtDataService.Create(entity: null, cancellationToken: default,
+                 new Dictionary<string, object>() { { "User", User } });
 
-            //string jwToken = _jwtDataService.Get(null, cancellationToken);
+            Request.HttpContext.Response.Headers.Add("Authorization", "Bearer " + jwToken);
 
-            //    var response = req.CreateResponse(HttpStatusCode.Moved);
-            //    response.Headers.Add("Authorization", "Bearer " + jwToken);
-
-            //    string mobileRedirectUri = "openstory://login?token=" + jwToken;
-            //    response.Headers.Location = new Uri(mobileRedirectUri);
-            //    return response;
-            //}
-            //catch(Exception ex)
-            //{
-            //    var exceptionJson = JsonConvert.SerializeObject(ex);
-            //    log.Error($"Error Occured {exceptionJson}");
-            //    throw ex;
-            //}
+            //TODO let client pass redirect url and add capability for checks.
+            string mobileRedirectUri = "openstory://login?token=" + jwToken;
+            return Redirect(mobileRedirectUri);
+          
         }
 
     }
