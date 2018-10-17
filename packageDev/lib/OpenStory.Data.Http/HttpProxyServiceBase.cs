@@ -14,7 +14,7 @@ namespace OpenStory.Data.Http
         {        
         }
 
-        public async Task<KeyValuePair<object, object>> SessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null)
+        public virtual async Task<KeyValuePair<object, object>> SessionTokens(CancellationToken cancellationToken = default(CancellationToken), IDictionary<string, object> parameters = null)
         {
             cancellationToken.ThrowIfCancellationRequested();
 

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace OpenStory.Api.Domain
+namespace OpenStory.Api.Domain.Model
 {
     public class Story
     {
