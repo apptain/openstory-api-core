@@ -1,24 +1,23 @@
 ﻿using Hystrix.Dotnet;
 using Microsoft.Extensions.Logging;
+using OpenStory;
 using OpenStory.Data;
-using OpenStory.Data.Http;
-using OpenStory.Identity;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OpenStory.Api.Services
+namespace OpenUser.Api.Services
 {
-    public class AuthenticationService<Story> : Container<Story>
+    public class AuthenticationService<User> : Container<User>
     {
-        private readonly IDataService<Story> _storyDataService;
+        private readonly IDataService<User> _userDataService;
 
         public AuthenticationService(Dictionary<string, IDataService<object>> dataServices, IDataServiceConfig config, 
-            HystrixCommandFactory hystrixCommandFactory, ILogger<IDataService<Story>> logger) :
+            HystrixCommandFactory hystrixCommandFactory, ILogger<IDataService<User>> logger) :
             base(dataServices, config, hystrixCommandFactory, logger)
         {
-            if (!dataServices.ContainsKey("StoryDataService"))
+            if (!dataServices.ContainsKey("UserDataService"))
             {
                 throw new ArgumentNullException("AuthenticatedIdentity",
                     "AuthenticatedIdentity required in parameters");
@@ -26,15 +25,15 @@ namespace OpenStory.Api.Services
             
         }
 
-        protected override async Task<Story> OnCreate(Story entity, 
+        protected override async Task<User> OnCreate(User entity, 
             CancellationToken cancellationToken = default(CancellationToken), 
             IDictionary<string, object> parameters = null)
         {
             try
             {
-                _logger.LogTrace("Story Create Call");
-                var story = await _storyDataService.Create(entity, cancellationToken, parameters);
-                return story;
+                _logger.LogTrace("User Create Call");
+                var user = await _userDataService.Create(entity, cancellationToken, parameters);
+                return user;
             }
             catch (Exception exception)
             {
@@ -44,15 +43,14 @@ namespace OpenStory.Api.Services
             }
         }
 
-
-        protected override async Task<ICollection<Story>> OnGet(IDictionary<string, object> filters = null, 
+        protected override async Task<ICollection<User>> OnGet(IDictionary<string, object> filters = null, 
             CancellationToken cancellationToken = default(CancellationToken), 
             IDictionary<string, object> parameters = null)
         {
             try
             {
-                _logger.LogTrace("Story Create Call");
-                return  await _storyDataService.Get(filters, cancellationToken, parameters);
+                _logger.LogTrace("User Create Call");
+                return  await _userDataService.Get(filters, cancellationToken, parameters);
             }
             catch (Exception exception)
             {

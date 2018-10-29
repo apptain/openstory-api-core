@@ -21,7 +21,7 @@ namespace OpenStory.Data
 
         public virtual ILogger<IDataService<T>> _logger { get; private set; }
 
-        public DataServiceBase(IDataServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
+        public DataServiceBase(IDataServiceConfig config, IHystrixCommandFactory hystrixCommandFactory, 
             ILogger<IDataService<T>> logger)
         {            
             _config = config ?? throw new ArgumentNullException(nameof(config));

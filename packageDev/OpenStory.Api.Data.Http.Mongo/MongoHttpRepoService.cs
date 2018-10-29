@@ -17,7 +17,7 @@ using OpenStory.Data.Http;
 
 namespace OpenStory.Api.Data.Http.Mongo
 {
-    public class MongoDataService<T> : HttpRepoServiceBase<T>
+    public class MongoHttpRepoService<T> : HttpRepoServiceBase<T>
     {
         private readonly IMongoClient client;
         private readonly IMongoDatabase db;
@@ -43,8 +43,8 @@ namespace OpenStory.Api.Data.Http.Mongo
             return db.GetCollection<TMongoType>(collectionName);
         }
 
-        public MongoDataService(HttpRepoServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
-            ILogger<IDataService<T>> logger) : base(config, hystrixCommandFactory, logger)
+        public MongoHttpRepoService(IMongoHttpRepoServiceConfig config, IHystrixCommandFactory hystrixCommandFactory, 
+            ILogger<IDataService<T>> logger) : base((IHttpRepoServiceConfig)config, hystrixCommandFactory, logger)
         {
             client = new MongoClient(config.ConnectionString);
             db = client.GetDatabase(config.DatabaseName);

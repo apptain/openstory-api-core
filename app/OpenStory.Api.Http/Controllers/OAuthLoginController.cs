@@ -9,8 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using OpenStory.Api.Domain;
-using OpenStory.Api.Domain.Model;
+using OpenStory.Api.Http.Domain;
 using OpenStory.Api.Http.Linking;
 using OpenStory.Data;
 

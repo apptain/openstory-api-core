@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OpenStory.Data.Provide;
 
-namespace OpenStory.Data.Http.Repo.Auth.OAuth.Azure
+namespace OpenStory.Data.Http.Provider.Auth.OAuth.Azure
 {
-    public class OAuthAzureRepoServiceConfig //: ProviderServiceConfigBase
+    public class OAuthAzureProviderServiceConfig : ProviderServiceConfigBase
     {
-        //public JwtProviderServiceConfig()
-        //{
-        //    Name = "JWT";
-        //}
+        public OAuthAzureProviderServiceConfig()
+        {
+            Name = "AzureOAuth";
+        }
     }
 }

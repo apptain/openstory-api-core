@@ -32,12 +32,13 @@ namespace OpenStory.Api.Http.Host
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
-            {
+            { 
                 c.SwaggerDoc("v1", new Info { Title = "OpenStory Api", Version = "v1" });
             });
 
             services.AddHystrix();
             services.Configure<HystrixOptions>(options => Configuration.GetSection("Hystrix").Bind(options));
+            services.BindDomainServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

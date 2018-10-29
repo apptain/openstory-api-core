@@ -1,12 +1,18 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace OpenStory.Api.Domain.Model
+namespace OpenStory.Api.Http.Domain
 {
-    public class Profile
+    public class User
     {
+        public User()
+        {
+            Id = Guid.NewGuid();
+            DateCreated = DateTime.Now;
+        }
+
         [JsonProperty(PropertyName = "id")]
-        public Guid IdentityId { get; }
+        public Guid Id { get; }
         [JsonProperty(PropertyName = "dateCreated")]
         public DateTime DateCreated { get; }
 

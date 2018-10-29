@@ -5,7 +5,7 @@ namespace OpenStory.Data.Http
 {
     public abstract class HttpRepoServiceBase<T> : DataServiceBase<T>
     {
-        public HttpRepoServiceBase(HttpRepoServiceConfig config, HystrixCommandFactory hystrixCommandFactory, 
+        public HttpRepoServiceBase(IHttpRepoServiceConfig config, IHystrixCommandFactory hystrixCommandFactory, 
             ILogger<IDataService<T>> logger) : base((IDataServiceConfig)config, hystrixCommandFactory, logger)
         {
         }

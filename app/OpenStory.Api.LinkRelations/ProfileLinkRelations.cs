@@ -4,7 +4,7 @@
     {
         public static class ProfileResource
         {
-            public const string Get = "tag:story@openstory.com,2018:story-get";
+            public const string Get = "tag:profile@openstory.com,2018:profile-get";
         }
     }
 }

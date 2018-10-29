@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OpenStory.Data.Provide;
 
-namespace OpenStory.Data.Http.Repo.Auth.OAuth.Azure
+namespace OpenStory.Data.Http.Provider.Auth.OAuth.Azure
 {
-    class OAuthAzureRepoService
+    public class OAuthAzureProviderService : ProviderServiceBase<>
     {
+        
     }
 }

@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hystrix.Dotnet.AspNetCore" Version="1.1.0-beta1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0-preview2-35157" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0-preview2-35157" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0-preview2-35157" />
@@ -21,7 +22,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\packageDev\lib\OpenStory.Container\OpenStory.csproj" />
     <ProjectReference Include="..\..\packageDev\lib\OpenStory.Data\OpenStory.Data.csproj" />
-    <ProjectReference Include="..\OpenStory.Api.Domain\OpenStory.Api.Domain.csproj" />
+    <ProjectReference Include="..\..\packageDev\OpenStory.Api.Data.Http.Mongo\OpenStory.Data.Http.Repo.Mongo.csproj" />
+    <ProjectReference Include="..\..\packageDev\OpenStory.Auth.Token.Jwt\OpenStory.Data.Provider.Auth.Token.Jwt.csproj" />
     <ProjectReference Include="..\OpenStory.Api.LinkRelations\OpenStory.Api.Http.Linking.csproj" />
   </ItemGroup>
 
