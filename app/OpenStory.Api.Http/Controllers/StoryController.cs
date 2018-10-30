@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using OpenStory.Data;
 using OpenStory.Api.Http.Linking;
 using OpenStory.Api.Http.Domain;
+using System.Collections.Generic;
 
 namespace OpenStory.Api.Http.Controllers
 {
@@ -47,7 +48,7 @@ namespace OpenStory.Api.Http.Controllers
         {
             try
             {
-                var resource = await _dataService.Get<Story>(null, HttpContext.RequestAborted);
+                var resource = await _dataService.Get(new Dictionary<string, object>(), HttpContext.RequestAborted);
 
                 return Ok(resource);
             }

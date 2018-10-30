@@ -19,20 +19,35 @@ namespace OpenStory.Api.Http
                 throw new ArgumentNullException(nameof(services));
             }
 
-            try
-            {
-                services.Configure<IMongoHttpRepoServiceConfig>(options => configuration.GetSection("MongoDb").Bind(options));
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-            services.AddSingleton<IDataService<Story>, MongoHttpRepoService<Story>>((ctx) =>
+
+            services.AddTransient<IDataService<Story>, MongoHttpRepoService<Story>>((ctx) =>
             {
                 var logger = ctx.GetRequiredService<ILogger<MongoHttpRepoService<Story>>>();
                 var hystrixCommandFactory = ctx.GetRequiredService<IHystrixCommandFactory>();
 
-                var config = ctx.GetRequiredService<IMongoHttpRepoServiceConfig>();
+                //try
+                //{
+                //    services.Configure<MongoHttpRepoServiceConfig>(myOptions =>
+                //    {
+                //        myOptions.ConnectionString = "mongodb://openstory:N85R0UC45f3wGfDcAq0q@cluster0-shard-00-00-awcd9.mongodb.net:27017,cluster0-shard-00-01-awcd9.mongodb.net:27017,cluster0-shard-00-02-awcd9.mongodb.net:27017/dev?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
+                //        myOptions.DatabaseName = "openstory";
+
+                //    });
+
+
+                //    //configuration.GetSection("MongoDb").Bind(options));
+                //}
+                //catch (Exception ex)
+                //{
+                //    throw ex;
+                //}
+
+                var config = new MongoHttpRepoServiceConfig()
+                {
+
+                };
+
+                //ctx.GetRequiredService<MongoHttpRepoServiceConfig>();
 
 
                 return new MongoHttpRepoService<Story>(config, hystrixCommandFactory, logger);
